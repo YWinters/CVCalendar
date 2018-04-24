@@ -81,6 +81,8 @@ public final class CVCalendarMenuView: UIView {
         dateFormatter.locale = locale
         var weekdays: NSArray
 
+		self.removeAllSubviews()
+
         switch weekdaySymbolType! {
         case .normal:
             weekdays = dateFormatter.weekdaySymbols as NSArray
