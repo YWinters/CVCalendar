@@ -67,6 +67,7 @@ public final class CVCalendarMenuView: UIView {
 
     public func setupWeekdaySymbols() {
         if var calendar = self.calendar {
+			calendar.locale = Locale(identifier: "fr_FR")
             (calendar as NSCalendar).components([NSCalendar.Unit.month, NSCalendar.Unit.day], from: Foundation.Date())
             calendar.firstWeekday = firstWeekday!.rawValue
             symbols = calendar.weekdaySymbols
