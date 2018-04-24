@@ -21,6 +21,7 @@ public final class CVCalendarMenuView: UIView {
     public var dayOfWeekFont: UIFont? = UIFont(name: "Avenir", size: 10)
     public var weekdaySymbolType: WeekdaySymbolType? = .short
     public var calendar: Calendar? = Calendar.current
+	public var locale: Locale = Locale(identifier: "nl_BE")
     
     @IBOutlet public weak var menuViewDelegate: AnyObject? {
         set {
@@ -67,7 +68,7 @@ public final class CVCalendarMenuView: UIView {
 
     public func setupWeekdaySymbols() {
         if var calendar = self.calendar {
-			calendar.locale = Locale(identifier: "fr_FR")
+			calendar.locale = locale
             (calendar as NSCalendar).components([NSCalendar.Unit.month, NSCalendar.Unit.day], from: Foundation.Date())
             calendar.firstWeekday = firstWeekday!.rawValue
             symbols = calendar.weekdaySymbols
@@ -77,7 +78,7 @@ public final class CVCalendarMenuView: UIView {
     public func createDaySymbols() {
         // Change symbols with their places if needed.
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "fr_FR")
+        dateFormatter.locale = locale
         var weekdays: NSArray
 
         switch weekdaySymbolType! {
